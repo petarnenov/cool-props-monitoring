@@ -11,12 +11,12 @@
     background-color: gray;
     opacity: 0.3;
     z-index: 99;
-    max-height: 70vh;    
+    max-height: 70vh;
     overflow-y: auto;
 
-    & h4{
-        padding: .5rem;        
-        color: white;        
+    & h4 {
+        padding: .5rem;
+        color: white;
     }
 
     & ul {
@@ -36,8 +36,8 @@
             background-color: white;
             border-radius: 4px;
             box-shadow: 0 0 4px rgba(0, 0, 0, .25);
-            gap: 1rem ;
-            
+            gap: 1rem;
+
             &.changed {
                 color: red;
             }
@@ -49,7 +49,7 @@
         }
     }
 
-    &:hover{
+    &:hover {
         opacity: 1;
     }
 }

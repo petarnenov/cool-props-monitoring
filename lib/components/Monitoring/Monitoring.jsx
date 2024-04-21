@@ -28,29 +28,29 @@ const Monitoring = ({ propsToMonitoring, componentName }) => {
 
   return (
     <>
-      {showMonitoring ? (
-        <section className={styles.container}>
-          <ul>
-            <h4>Props Monitoring {componentName}</h4>
-            {propsToMonitoring &&
-              Object.keys(propsToMonitoring).map((key) => {
-                const changed = propsToMonitoring[key].counter > 2;
+      {showMonitoring ? (       
+          <section className={styles.container}>
+            <ul>
+              <h4>Props Monitoring {componentName}</h4>
+              {propsToMonitoring &&
+                Object.keys(propsToMonitoring).map((key) => {
+                  const changed = propsToMonitoring[key].counter > 2;
 
-                return (
-                  <li
-                    key={key}
-                    className={classnames({
-                      [styles.changed]: changed,
-                    })}
-                    onMouseUp={handleMouseUp(key)}
-                  >
-                    <span>{key}</span>
-                    <span>{propsToMonitoring[key].counter}</span>
-                  </li>
-                );
-              })}
-          </ul>
-        </section>
+                  return (
+                    <li
+                      key={key}
+                      className={classnames({
+                        [styles.changed]: changed,
+                      })}
+                      onMouseUp={handleMouseUp(key)}
+                    >
+                      <span>{key}</span>
+                      <span>{propsToMonitoring[key].counter}</span>
+                    </li>
+                  );
+                })}
+            </ul>
+          </section>        
       ) : null}
     </>
   );

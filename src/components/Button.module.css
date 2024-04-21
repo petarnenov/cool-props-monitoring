@@ -1,0 +1,1 @@
+.container{display:flex;justify-content:center;align-items:center;border-radius:.25rem;padding:.5rem 1rem;margin:1rem 2rem}.container.primary{background-color:#007bff;color:#fff}.container.secondary{background-color:#6c757d;color:#fff}.container.success{background-color:#28a745;color:#fff}.container:hover{cursor:pointer}

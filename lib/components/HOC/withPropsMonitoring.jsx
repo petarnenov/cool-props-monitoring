@@ -13,19 +13,19 @@ const withPropsMonitoring = (Component) => {
     );
 
     useEffect(() => {
-      Object.keys(propsToMonitoring).forEach((key) => {
-        if (propsToMonitoring[key].value !== props[key]) {
-          propsToMonitoring[key].counter++;
+      Object.keys(propsToMonitoring).forEach((k) => {
+        if (propsToMonitoring[k].value !== props[k]) {
+          propsToMonitoring[k].counter++;
         }
       });
     }, [props]);
 
     return (
-      <>
-        <Monitoring
-          propsToMonitoring={propsToMonitoring}
-          componentName={Component.name}
-        />
+      <>        
+          <Monitoring
+            propsToMonitoring={propsToMonitoring}
+            componentName={Component.name}
+          />        
         <Component {...props} />
       </>
     );
