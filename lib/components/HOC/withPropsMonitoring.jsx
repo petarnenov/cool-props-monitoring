@@ -16,6 +16,7 @@ const withPropsMonitoring = (Component) => {
       Object.keys(propsToMonitoring).forEach((k) => {
         if (propsToMonitoring[k].value !== props[k]) {
           propsToMonitoring[k].counter++;
+          propsToMonitoring[k].value = props[k];
         }
       });
     }, [props]);
