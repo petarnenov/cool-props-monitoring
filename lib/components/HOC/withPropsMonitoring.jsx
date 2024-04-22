@@ -16,6 +16,7 @@ const withPropsMonitoring = (Component) => {
       Object.keys(propsToMonitoring.current).forEach((key) => {
         if (propsToMonitoring.current[key].value !== props[key]) {
           propsToMonitoring.current[key].counter++;
+          propsToMonitoring.current[key].value = props[key];
           setUpdate(() => Date.now());
         }
       });
