@@ -1,32 +1,33 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Monitoring } from "../Monitoring";
 
 const withPropsMonitoring = (Component) => {
   return function ComponentWithPropsMonitoring(props) {
-    const propsToMonitoring = useMemo(
-      () =>
-        Object.keys(props).reduce((acc, key) => {
-          acc[key] = { value: props[key], counter: 0 };
-          return acc;
-        }, {}),
-      []
+    const [update, setUpdate] = useState(Date.now());
+
+    const propsToMonitoring = useRef(
+      Object.keys(props).reduce((acc, key) => {
+        acc[key] = { value: props[key], counter: 0 };
+        return acc;
+      }, {}),
     );
 
     useEffect(() => {
-      Object.keys(propsToMonitoring).forEach((k) => {
-        if (propsToMonitoring[k].value !== props[k]) {
-          propsToMonitoring[k].counter++;
-          propsToMonitoring[k].value = props[k];
+      Object.keys(propsToMonitoring.current).forEach((key) => {
+        if (propsToMonitoring.current[key].value !== props[key]) {
+          propsToMonitoring.current[key].counter++;
+          setUpdate(() => Date.now());
         }
       });
     }, [props]);
 
     return (
-      <>        
-          <Monitoring
-            propsToMonitoring={propsToMonitoring}
-            componentName={Component.name}
-          />        
+      <>
+        <Monitoring
+          id={update}
+          propsToMonitoring={propsToMonitoring.current}
+          componentName={Component.name}
+        />
         <Component {...props} />
       </>
     );

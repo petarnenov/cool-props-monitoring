@@ -19,7 +19,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  btnText: PropTypes.string,
+  btnText: PropTypes.any,
   btnType: PropTypes.oneOf(["primary", "secondary", "success"]),
   onClick: PropTypes.func,
 };
